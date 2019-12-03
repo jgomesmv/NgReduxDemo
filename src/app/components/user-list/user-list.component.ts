@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from "@angular/core";
 
 import { UserModel } from "src/app/models/user/user.model";
 import { ViewModeEnum } from "src/app/enums/view-mode.enum";
+import { UserDispatchers } from "src/app/root-store/users-store";
 
 @Component({
   selector: "users-list",
@@ -14,7 +15,7 @@ export class UserListComponent implements OnInit {
   public mode: ViewModeEnum = ViewModeEnum.view;
   public viewModes = ViewModeEnum;
 
-  constructor() {}
+  constructor(private userDispatchers: UserDispatchers) {}
 
   ngOnInit() {}
 
@@ -23,7 +24,7 @@ export class UserListComponent implements OnInit {
   }
 
   public onDeleteAll(): void {
-    // this.usersDataSource.removeAllUsers();
+    this.userDispatchers.clearUsers();
   }
 
   public onSaveAll(): void {

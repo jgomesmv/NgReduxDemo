@@ -12,6 +12,10 @@ export class UserDispatchers {
     this.store.dispatch(UserActions.deleteUser({ name }));
   }
 
+  clearUsers() {
+    this.store.dispatch(UserActions.clearUsers());
+  }
+
   addUser(user: UserModel) {
     this.store.dispatch(UserActions.addUser({ user }));
   }
