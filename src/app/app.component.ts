@@ -8,35 +8,22 @@ import { UserDispatchers, UserSelectors } from "./root-store/users-store";
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.scss"]
 })
-export class AppComponent implements OnInit, OnDestroy {
+export class AppComponent implements OnInit {
   public users: UserModel[] = [];
 
   constructor(
-    // private usersDataSource: UsersDataSource
     private userDispatchers: UserDispatchers,
     private userSelectors: UserSelectors
   ) {}
 
   ngOnInit() {
-    // this.usersDataSource.connect().subscribe(
-    //   (users) => {
-    //     this.users = users;
-    //   },
-    //   (error) => {
-    //     console.log(error);
-    //   }
-    // );
     this.userSelectors.users$.subscribe(users => {
       this.users = users;
     });
     this.userDispatchers.getusers();
   }
 
-  ngOnDestroy() {
-    // this.usersDataSource.disconnect();
-  }
-
   public onAddUser(user: UserModel): void {
-    // this.usersDataSource.addUser(user);
+    this.userDispatchers.addUser(user);
   }
 }
