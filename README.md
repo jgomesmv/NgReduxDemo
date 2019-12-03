@@ -1,5 +1,6 @@
-# UsersManagerSPA
+# NgReduxDemo
 
+A scalable implementation on top of NgRedux for large applications 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.19.
 Please install the CLI globaly using the npm package manager:
 `npm install -g @angular/cli`
