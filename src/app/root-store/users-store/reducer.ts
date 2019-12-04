@@ -19,9 +19,9 @@ const userReducer = createReducer(
   on(UserActions.updateUser, (state, { user }) => {
     return adapter.updateOne(user, state);
   }),
-  // on(UserActions.updateUsers, (state, { users }) => {
-  //   return adapter.updateMany(users, state);
-  // }),
+  on(UserActions.updateUsers, (state, { users }) => {
+    return adapter.updateMany(users, state);
+  }),
   on(UserActions.mapUsers, (state, { entityMap }) => {
     return adapter.map(entityMap, state);
   }),

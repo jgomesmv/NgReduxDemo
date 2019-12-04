@@ -43,10 +43,10 @@ export const updateUser = createAction(
   "[Users] Update User",
   props<{ user: Update<UserModel> }>()
 );
-// export const updateUsers = createAction(
-//   "[Users] Update Users",
-//   props<{ users: Update<UserModel>[] }>()
-// );
+export const updateUsers = createAction(
+  "[Users] Update Users",
+  props<{ users: Update<UserModel>[] }>()
+);
 export const mapUsers = createAction(
   "[Users] Map Users",
   props<{ entityMap: EntityMap<UserModel> }>()

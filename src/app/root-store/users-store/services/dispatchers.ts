@@ -3,6 +3,7 @@ import { Store } from "@ngrx/store";
 import { UserModel } from "../../../models/user/user.model";
 import * as UserActions from "../actions";
 import { adapter, State } from "../state";
+import { Update } from "@ngrx/entity";
 
 @Injectable()
 export class UserDispatchers {
@@ -20,9 +21,14 @@ export class UserDispatchers {
     this.store.dispatch(UserActions.addUser({ user }));
   }
 
-  // updateUser(user: UserModel) {
-  //   this.store.dispatch(UserActions.updateUser({ user }));
-  // }
+  updateUser(user: UserModel) {
+    const editUser: Update<UserModel> = {
+      id: user.previousName,
+      changes: { name: user.name }
+    };
+
+    this.store.dispatch(UserActions.updateUser({ user: editUser }));
+  }
 
   getusers() {
     this.store.dispatch(UserActions.getUsers());

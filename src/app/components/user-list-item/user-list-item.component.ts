@@ -29,7 +29,7 @@ export class UserListItemComponent implements OnInit {
 
   public onUserUpdated(user: UserModel): void {
     user.previousName = this.user.name;
-    // this.usersDataSource.updateUser(user);
+    this.userDispatchers.updateUser(user);
     this.mode = this.viewModes.view;
   }
 }
