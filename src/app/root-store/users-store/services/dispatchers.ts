@@ -30,7 +30,22 @@ export class UserDispatchers {
     this.store.dispatch(UserActions.updateUser({ user: editUser }));
   }
 
+  updateUsers(users: UserModel[]) {
+    const editUsers: Update<UserModel>[] = users.map(user => {
+      return {
+        id: user.previousName,
+        changes: { name: user.name }
+      };
+    });
+
+    this.store.dispatch(UserActions.updateUsers({ users: editUsers }));
+  }
+
   getusers() {
     this.store.dispatch(UserActions.getUsers());
+  }
+
+  selectUser(name: string) {
+    this.store.dispatch(UserActions.selectUser({name}));
   }
 }

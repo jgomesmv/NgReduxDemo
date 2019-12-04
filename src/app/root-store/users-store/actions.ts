@@ -3,20 +3,6 @@ import { createAction, props } from "@ngrx/store";
 import { UserModel } from "../../models/user/user.model";
 import { Update, EntityMap, Predicate } from "@ngrx/entity";
 
-// TODO: Add enum with all actions
-// export enum UserActionsEnum {
-//   GetUsers = "[Users] Get Users",
-//   GetUsersSuccess = "[Users] Get Users Success",
-//   CreateUser = "[Users], Create User",
-//   CreateUserSuccess = "[Users], Create User",
-//   UpdateUser = "[Users] Update User",
-//   UpdateUserSuccess = "[Users] Update User Success",
-//   DeleteUser = "[Users] Delete User",
-//   DeleteUserSuccess = "[Users] Delete User Success",
-//   DeleteAllUsers = "[Users] Delete All Users",
-//   DeleteAllUsersSuccess = "[Users] Delete All Users Success"
-// }
-
 export const getUsers = createAction("[Users] Get Users");
 
 export const loadUsers = createAction(
@@ -62,5 +48,9 @@ export const deleteUsers = createAction(
 export const deleteUsersByPredicate = createAction(
   "[Users] Delete Users By Predicate",
   props<{ predicate: Predicate<UserModel> }>()
+);
+export const selectUser = createAction(
+  "[Users] Select User",
+  props<{ name: string }>()
 );
 export const clearUsers = createAction("[Users] Clear Users");

@@ -13,7 +13,7 @@ export class UserEffects {
       switchMap(() =>
         this.usersService.get().pipe(
           map(users => UsersActions.loadUsers({ users })),
-          // catchError(error => of(UsersActions.getHeroesError({ error })))
+          // catchError(error => of(UsersActions.getUsersError({ error })))
         )
       )
     )

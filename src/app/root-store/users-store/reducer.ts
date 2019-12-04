@@ -39,6 +39,12 @@ const userReducer = createReducer(
   }),
   on(UserActions.clearUsers, state => {
     return adapter.removeAll({ ...state, selectedUserId: null });
+  }),
+  on(UserActions.selectUser, (state, { name }) => {
+    return {
+      ...state,
+      selectedUserName: name
+    };
   })
 );
 
