@@ -50,6 +50,7 @@ export class AppComponent implements OnInit {
     // Dispatch actions
     this.userDispatchers.getusers();
     this.userDispatchers.selectUser("userC");
+    this.userDispatchers.deleteUsersByPredicate(user => user.name === "userA");
   }
 
   public onAddUser(user: UserModel): void {

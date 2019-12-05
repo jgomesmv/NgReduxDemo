@@ -3,7 +3,7 @@ import { Store } from "@ngrx/store";
 import { UserModel } from "../../../models/user/user.model";
 import * as UserActions from "../actions";
 import { adapter, State } from "../state";
-import { Update } from "@ngrx/entity";
+import { Update, Predicate } from "@ngrx/entity";
 
 @Injectable()
 export class UserDispatchers {
@@ -11,6 +11,10 @@ export class UserDispatchers {
 
   deleteUser(name: string) {
     this.store.dispatch(UserActions.deleteUser({ name }));
+  }
+
+  deleteUsersByPredicate(predicate: Predicate<UserModel>) {
+    this.store.dispatch(UserActions.deleteUsersByPredicate({ predicate }));
   }
 
   clearUsers() {
@@ -46,6 +50,6 @@ export class UserDispatchers {
   }
 
   selectUser(name: string) {
-    this.store.dispatch(UserActions.selectUser({name}));
+    this.store.dispatch(UserActions.selectUser({ name }));
   }
 }
