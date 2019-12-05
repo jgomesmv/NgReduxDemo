@@ -51,6 +51,10 @@ export class AppComponent implements OnInit {
     this.userDispatchers.getusers();
     this.userDispatchers.selectUser("userC");
     this.userDispatchers.deleteUsersByPredicate(user => user.name === "userA");
+    this.userDispatchers.mapUsers(user => {
+      user.name = user.name.indexOf("D") > -1 ? `${user.name}aftermap` : user.name;
+      return user;
+    });
   }
 
   public onAddUser(user: UserModel): void {

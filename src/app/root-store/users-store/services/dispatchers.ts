@@ -3,7 +3,7 @@ import { Store } from "@ngrx/store";
 import { UserModel } from "../../../models/user/user.model";
 import * as UserActions from "../actions";
 import { adapter, State } from "../state";
-import { Update, Predicate } from "@ngrx/entity";
+import { Update, Predicate, EntityMap } from "@ngrx/entity";
 
 @Injectable()
 export class UserDispatchers {
@@ -43,6 +43,10 @@ export class UserDispatchers {
     });
 
     this.store.dispatch(UserActions.updateUsers({ users: editUsers }));
+  }
+
+  mapUsers(entityMap: EntityMap<UserModel>) {
+    this.store.dispatch(UserActions.mapUsers({entityMap}));
   }
 
   getusers() {
