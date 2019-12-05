@@ -23,6 +23,19 @@ const getSelectedUser = createSelector(selectUsersState, state => {
   return state.entities[state.selectedUserName];
 });
 
+const selectUserByName = (name: string) =>
+  createSelector(selectUsersState, state => {
+    return state.entities[name];
+  });
+
+const selectUsersByPage = (currentPage: number, pageSize: number) =>
+  createSelector(getAllUsers, state => {
+    const start = currentPage * pageSize;
+    const end = start + pageSize;
+
+    return state.slice(start, end);
+  });
+
 @Injectable()
 export class UserSelectors {
   constructor(private store: Store<State>) {}
@@ -32,4 +45,8 @@ export class UserSelectors {
   users$ = this.store.select(getAllUsers);
   usersTotal$ = this.store.select(getUserTotal);
   selectedUser$ = this.store.select(getSelectedUser);
+  selectUserByName$ = (name: string) =>
+    this.store.select(selectUserByName(name));
+  selectUsersByPage$ = (currentPage: number, pageSize: number) =>
+    this.store.select(selectUsersByPage(currentPage, pageSize));
 }

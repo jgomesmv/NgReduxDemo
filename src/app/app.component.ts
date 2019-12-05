@@ -34,6 +34,19 @@ export class AppComponent implements OnInit {
       console.log(`User names on the store: ${ids.join(", ")}`);
     });
 
+    const userName = "userA";
+    this.userSelectors.selectUserByName$(userName).subscribe(user => {
+      console.log(`The user selected is: ${user ? user.name : "None"}`);
+    });
+
+    const currentPage = 0;
+    const pageSize = 4;
+    this.userSelectors
+      .selectUsersByPage$(currentPage, pageSize)
+      .subscribe(users => {
+        console.log("This are the users by page:", users);
+      });
+
     // Dispatch actions
     this.userDispatchers.getusers();
     this.userDispatchers.selectUser("userC");
